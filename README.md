@@ -1,4 +1,4 @@
-# NBA-Player-Stats-Visualization
+# NBA-Player-Statatistic-Visualization
 A visualization tool used to help NBA sports betters.
 This will include:
 (1) A CSV file containing game-by-game statistics of active NBA players of the 2022-2023 season.
