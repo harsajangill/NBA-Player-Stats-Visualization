@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Import Bootstrap CSS from a CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>NBA Player Statistics</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">NBA Player Statistics</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Team</th>
+                    <th>Position</th>
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                <tr>
+                    <td>{{ player.player_name }}</td>
+                    <td>{{ player.own_team }}</td>
+                    <td>{{ player.position }}</td>
+                    <!-- Add more data fields as needed -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

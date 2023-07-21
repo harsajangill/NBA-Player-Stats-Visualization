@@ -37,5 +37,5 @@ def csv_to_json(csvFilePath):
     write_json(data2, 'teams.json')
 
 
-csvFilePath = 'input.csv'
+csvFilePath = 'input/input.csv'
 csv_to_json(csvFilePath)
