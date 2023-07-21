@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Import Bootstrap CSS from a CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Import Chart.js from a CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>NBA Player Statistics</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">NBA Player Statistics</h1>
+        <canvas id="pointsChart"></canvas>
+        <script>
+            var ctx = document.getElementById('pointsChart').getContext('2d');
+            var pointsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [{% for game_stats in player_stats %}"{{ game_stats['date'] }}"{% if not loop.last %}, {% endif %}{% endfor %}],
+                    datasets: [{
+                        label: 'Points',
+                        data: [{% for game_stats in player_stats %}{{ game_stats['pts'] }}{% if not loop.last %}, {% endif %}{% endfor %}],
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Points'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+        {% for game_stats in player_stats %}
+        <h2>Game ID: {{ game_stats['game_id'] }}</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    {% for stat in game_stats.keys() %}
+                    <th>{{ stat }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for stat in game_stats.values() %}
+                    <td>{{ stat }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+</body>
+</html>
