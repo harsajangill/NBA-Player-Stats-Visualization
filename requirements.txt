@@ -1,0 +1,10 @@
+dash==2.11.1
+dash_bootstrap_components==1.4.2
+pandas==2.0.3
+plotly==5.15.0
+PyMySQL==1.1.0
+python-dotenv==1.0.0
+SQLAlchemy==2.0.19
+tqdm==4.65.0
+gunicorn
+dash-tools
