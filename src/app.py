@@ -11,6 +11,8 @@ import pandas as pd
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+server = app.server
+
 # Query the database to fetch all Player records
 with SessionReader() as session:
     players = session.query(Player).all()
